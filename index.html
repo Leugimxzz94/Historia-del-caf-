@@ -11,199 +11,188 @@
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
+      padding: 0;
       background: #f7f5f1;
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      color: #292929;
-      text-align: center;
     }
 
-    .contenedor {
-      max-width: 600px;
+    .pagina {
+      width: 100%;
+      max-width: 700px;
       margin: 0 auto;
-      padding-bottom: 50px;
-    }
-
-    .portada {
-      padding: 45px 25px 30px;
-    }
-
-    .portada h1 {
-      font-size: 28px;
-      font-weight: 400;
-      margin: 0;
-      letter-spacing: 0.5px;
-    }
-
-    .portada p {
-      font-size: 16px;
-      color: #777;
-      margin-top: 12px;
     }
 
     .imagen {
-      width: 100%;
       display: block;
+      width: 100%;
+      height: auto;
       margin: 0;
+      padding: 0;
     }
 
-    .texto {
-      padding: 35px 28px;
-      background: #f7f5f1;
-    }
-
-    .texto h2 {
-      font-size: 23px;
-      font-weight: 400;
-      margin-bottom: 15px;
-    }
-
-    .texto p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: #666;
-    }
-
-    .redes {
-      padding: 35px 25px;
-    }
-
-    .redes h2 {
-      font-size: 20px;
-      font-weight: 400;
-      margin-bottom: 22px;
-    }
-
-    .boton {
-      display: block;
+    /* IMAGEN FINAL */
+    .final {
+      position: relative;
       width: 100%;
-      max-width: 320px;
-      margin: 12px auto;
-      padding: 15px 20px;
-      border: 1px solid #d2d0cb;
-      border-radius: 8px;
-      text-decoration: none;
-      color: #333;
-      background: white;
-      font-size: 16px;
+      line-height: 0;
     }
 
-    .boton:hover {
-      background: #f0eee9;
+    /*
+      BOTONES INVISIBLES SOBRE LOS BOTONES
+      DE INSTAGRAM Y FACEBOOK DE LA IMAGEN FINAL
+    */
+
+    .boton-instagram,
+    .boton-facebook {
+      position: absolute;
+      display: block;
+      height: 8%;
+      top: 63%;
+      background: transparent;
+      z-index: 10;
     }
+
+    .boton-instagram {
+      left: 9%;
+      width: 38%;
+    }
+
+    .boton-facebook {
+      left: 51%;
+      width: 38%;
+    }
+
+    /* AUDIO */
 
     .audio {
-      margin: 25px auto;
-      padding: 0 25px;
+      background: #f7f5f1;
+      text-align: center;
+      padding: 25px 20px 30px;
     }
 
     .audio button {
       border: none;
+      border-radius: 30px;
+      padding: 14px 28px;
       background: #292929;
       color: white;
-      padding: 14px 25px;
-      border-radius: 30px;
       font-size: 15px;
+      cursor: pointer;
     }
 
-    footer {
+    .audio p {
+      margin: 10px 0 0;
+      font-family: Arial, sans-serif;
       font-size: 12px;
-      color: #999;
-      padding: 20px;
+      color: #888;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="contenedor">
-
-    <!-- PORTADA -->
-    <section class="portada">
-      <h1>Tú siempre has sido parte de la historia.</h1>
-      <p>Una historia que comienza con una taza de café.</p>
-    </section>
-
+  <main class="pagina">
 
     <!-- IMAGEN 1 -->
-    <img class="imagen" src="imagen1.jpg" alt="Historia del café">
-
-
-    <!-- TEXTO -->
-    <section class="texto">
-      <h2>Cada taza tiene una historia</h2>
-
-      <p>
-        Detrás de cada café existen momentos, personas,
-        aromas y recuerdos que hacen especial cada visita.
-      </p>
-    </section>
-
+    <img
+      class="imagen"
+      src="C4DA13F8-8763-496B-9D5A-E0477E1975A7.png"
+      alt="Historia del café"
+    >
 
     <!-- IMAGEN 2 -->
-    <img class="imagen" src="imagen2.jpg" alt="Historia del café">
-
+    <img
+      class="imagen"
+      src="1F871C37-53A1-4F07-9521-0391454A9210.png"
+      alt="Historia del café"
+    >
 
     <!-- IMAGEN 3 -->
-    <img class="imagen" src="imagen3.jpg" alt="Historia del café">
+    <img
+      class="imagen"
+      src="F902A271-1DA8-4FF3-927F-0D1D3D9AD901.png"
+      alt="Historia del café"
+    >
 
+    <!-- IMAGEN 4 -->
+    <img
+      class="imagen"
+      src="3AFA15B5-2B88-4B61-9887-5351BED8F93E.png"
+      alt="Historia del café"
+    >
+
+    <!-- IMAGEN 5 -->
+    <img
+      class="imagen"
+      src="CEA7B72F-328D-4822-8FF8-C70AEE86CB53.png"
+      alt="Historia del café"
+    >
 
     <!-- AUDIO -->
     <div class="audio">
 
-      <button onclick="reproducirAudio()">
+      <button onclick="reproducirMusica()">
         ▶ Escuchar la historia
       </button>
 
+      <p>
+        Una pequeña melodía para acompañar este momento.
+      </p>
+
       <audio id="musica" loop>
-        <source src="historia.mp3" type="audio/mpeg">
+        <source src="Instrumental.mp3" type="audio/mpeg">
       </audio>
 
     </div>
 
 
-    <!-- REDES SOCIALES -->
-    <section class="redes">
+    <!-- IMAGEN 6 / FINAL -->
+    <div class="final">
 
-      <h2>Sigue siendo parte de la historia</h2>
+      <img
+        class="imagen"
+        src="146E6F04-A3B3-4B32-93B3-F5CC1D8B4A02.png"
+        alt="Gracias por ser parte de nuestra historia"
+      >
 
-      <!-- CAMBIA ESTOS DOS ENLACES POR LOS DE CADA CAFETERÍA -->
-
+      <!-- INSTAGRAM -->
       <a
-        class="boton"
+        class="boton-instagram"
         href="https://www.instagram.com/"
-        target="_blank">
-        Instagram
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram">
       </a>
 
+      <!-- FACEBOOK -->
       <a
-        class="boton"
+        class="boton-facebook"
         href="https://www.facebook.com/"
-        target="_blank">
-        Facebook
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Facebook">
       </a>
 
-    </section>
+    </div>
 
-
-    <footer>
-      Gracias por ser parte de nuestra historia.
-    </footer>
-
-  </div>
+  </main>
 
 
   <script>
 
-    function reproducirAudio() {
+    function reproducirMusica() {
 
-      const audio = document.getElementById("musica");
+      const musica = document.getElementById("musica");
 
-      if (audio.paused) {
-        audio.play();
+      if (musica.paused) {
+        musica.play();
       } else {
-        audio.pause();
+        musica.pause();
       }
 
     }
