@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Historia del Café</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f5f1;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      color: #292929;
+      text-align: center;
+    }
+
+    .contenedor {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-bottom: 50px;
+    }
+
+    .portada {
+      padding: 45px 25px 30px;
+    }
+
+    .portada h1 {
+      font-size: 28px;
+      font-weight: 400;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .portada p {
+      font-size: 16px;
+      color: #777;
+      margin-top: 12px;
+    }
+
+    .imagen {
+      width: 100%;
+      display: block;
+      margin: 0;
+    }
+
+    .texto {
+      padding: 35px 28px;
+      background: #f7f5f1;
+    }
+
+    .texto h2 {
+      font-size: 23px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .texto p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #666;
+    }
+
+    .redes {
+      padding: 35px 25px;
+    }
+
+    .redes h2 {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 22px;
+    }
+
+    .boton {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+      margin: 12px auto;
+      padding: 15px 20px;
+      border: 1px solid #d2d0cb;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #333;
+      background: white;
+      font-size: 16px;
+    }
+
+    .boton:hover {
+      background: #f0eee9;
+    }
+
+    .audio {
+      margin: 25px auto;
+      padding: 0 25px;
+    }
+
+    .audio button {
+      border: none;
+      background: #292929;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 30px;
+      font-size: 15px;
+    }
+
+    footer {
+      font-size: 12px;
+      color: #999;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+
+    <!-- PORTADA -->
+    <section class="portada">
+      <h1>Tú siempre has sido parte de la historia.</h1>
+      <p>Una historia que comienza con una taza de café.</p>
+    </section>
+
+
+    <!-- IMAGEN 1 -->
+    <img class="imagen" src="imagen1.jpg" alt="Historia del café">
+
+
+    <!-- TEXTO -->
+    <section class="texto">
+      <h2>Cada taza tiene una historia</h2>
+
+      <p>
+        Detrás de cada café existen momentos, personas,
+        aromas y recuerdos que hacen especial cada visita.
+      </p>
+    </section>
+
+
+    <!-- IMAGEN 2 -->
+    <img class="imagen" src="imagen2.jpg" alt="Historia del café">
+
+
+    <!-- IMAGEN 3 -->
+    <img class="imagen" src="imagen3.jpg" alt="Historia del café">
+
+
+    <!-- AUDIO -->
+    <div class="audio">
+
+      <button onclick="reproducirAudio()">
+        ▶ Escuchar la historia
+      </button>
+
+      <audio id="musica" loop>
+        <source src="historia.mp3" type="audio/mpeg">
+      </audio>
+
+    </div>
+
+
+    <!-- REDES SOCIALES -->
+    <section class="redes">
+
+      <h2>Sigue siendo parte de la historia</h2>
+
+      <!-- CAMBIA ESTOS DOS ENLACES POR LOS DE CADA CAFETERÍA -->
+
+      <a
+        class="boton"
+        href="https://www.instagram.com/"
+        target="_blank">
+        Instagram
+      </a>
+
+      <a
+        class="boton"
+        href="https://www.facebook.com/"
+        target="_blank">
+        Facebook
+      </a>
+
+    </section>
+
+
+    <footer>
+      Gracias por ser parte de nuestra historia.
+    </footer>
+
+  </div>
+
+
+  <script>
+
+    function reproducirAudio() {
+
+      const audio = document.getElementById("musica");
+
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+
+    }
+
+  </script>
+
+</body>
+</html>
