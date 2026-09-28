@@ -13,10 +13,14 @@
       box-sizing: border-box;
     }
 
+    html,
     body {
       margin: 0;
       padding: 0;
       background: #ffffff;
+    }
+
+    body {
       font-family: Georgia, "Times New Roman", serif;
       color: #4b2e24;
     }
@@ -27,41 +31,68 @@
       margin: 0 auto;
     }
 
+    /* =========================
+       MÚSICA
+    ========================= */
+
+    .musica {
+      width: 100%;
+      background: #ffffff;
+      text-align: center;
+      padding: 22px 20px 20px;
+    }
+
+    .boton-musica {
+      appearance: none;
+      -webkit-appearance: none;
+
+      background: #ffffff;
+      color: #8b4b38;
+
+      border: 1.5px solid #9a624f;
+      border-radius: 50px;
+
+      padding: 13px 28px;
+
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+
+      box-shadow: 0 2px 8px rgba(80, 45, 30, 0.08);
+
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .boton-musica:active {
+      transform: scale(0.97);
+    }
+
+    /* =========================
+       IMÁGENES
+    ========================= */
+
     .imagen {
       display: block;
       width: 100%;
       height: auto;
       margin: 0;
       padding: 0;
+      border: 0;
     }
 
-    .musica {
-      text-align: center;
-      padding: 28px 20px 25px;
-    }
-
-    .boton-musica {
-      border: 1px solid #8b4b38;
-      background: white;
-      color: #8b4b38;
-      padding: 13px 24px;
-      border-radius: 30px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .boton-musica:active {
-      transform: scale(0.98);
-    }
+    /* =========================
+       REDES SOCIALES
+    ========================= */
 
     .social {
       text-align: center;
-      padding: 35px 20px 45px;
+      padding: 38px 20px 50px;
+      background: #ffffff;
     }
 
     .social h2 {
-      margin: 0 0 8px;
+      margin: 0 0 7px;
       font-size: 26px;
       font-weight: normal;
       font-style: italic;
@@ -82,6 +113,7 @@
     .redes {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -90,16 +122,36 @@
       display: inline-block;
       text-decoration: none;
       color: #8b4b38;
-      border: 1px solid #8b4b38;
-      border-radius: 25px;
-      padding: 11px 18px;
+      background: #ffffff;
+      border: 1px solid #9a624f;
+      border-radius: 30px;
+      padding: 10px 19px;
       font-size: 14px;
-      background: white;
+      transition: all 0.2s ease;
     }
+
+    .red:active {
+      transform: scale(0.97);
+    }
+
+    /* =========================
+       CARGANDO
+    ========================= */
+
+    .cargando {
+      text-align: center;
+      padding: 30px 20px;
+      color: #8b4b38;
+      font-style: italic;
+    }
+
+    /* =========================
+       CONFIGURADOR
+    ========================= */
 
     .configuracion {
       display: none;
-      padding: 30px 20px 50px;
+      padding: 35px 20px 50px;
       max-width: 600px;
       margin: auto;
     }
@@ -108,50 +160,53 @@
       text-align: center;
       font-weight: normal;
       color: #8b4b38;
+      margin-bottom: 30px;
     }
 
     .campo {
-      margin-bottom: 15px;
+      margin-bottom: 16px;
     }
 
     .campo label {
       display: block;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
       color: #4b2e24;
     }
 
     .campo input {
       width: 100%;
       padding: 13px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
+      border: 1px solid #d2c5bf;
+      border-radius: 9px;
       font-size: 15px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .campo input:focus {
+      border-color: #9a624f;
     }
 
     .boton-generar {
       width: 100%;
       padding: 14px;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
       background: #8b4b38;
       color: white;
+      font-family: inherit;
       font-size: 16px;
       cursor: pointer;
     }
 
     #resultado {
-      margin-top: 20px;
-      word-break: break-all;
+      margin-top: 22px;
       font-size: 14px;
+      line-height: 1.6;
+      word-break: break-all;
     }
 
-    .oculto {
-      display: none;
-    }
-
-    .cargando {
-      text-align: center;
-      padding: 30px;
+    #resultado a {
       color: #8b4b38;
     }
   </style>
@@ -161,19 +216,18 @@
 
   <div class="contenedor">
 
+    <!-- CARGANDO -->
     <div id="cargando" class="cargando">
       Cargando...
     </div>
 
-    <div id="historia" class="oculto">
 
-      <img
-        class="imagen"
-        src="C4DA13F8-8763-496B-9D5A-E0477E1975A7.png"
-        alt="Historia del café"
-      >
+    <!-- HISTORIA -->
+    <div id="historia" style="display:none;">
 
+      <!-- MÚSICA AL INICIO -->
       <div class="musica">
+
         <button id="botonMusica" class="boton-musica">
           ▶ Escuchar la historia
         </button>
@@ -181,57 +235,93 @@
         <audio id="audio" preload="auto">
           <source src="Instrumental.mp3" type="audio/mpeg">
         </audio>
+
       </div>
 
+
+      <!-- IMAGEN 1 -->
+      <img
+        class="imagen"
+        src="C4DA13F8-8763-496B-9D5A-E0477E1975A7.png"
+        alt="Historia del café"
+      >
+
+
+      <!-- IMAGEN 2 -->
       <img
         class="imagen"
         src="1F871C37-53A1-4F07-9521-0391454A9210.png"
         alt="Historia del café"
       >
 
+
+      <!-- IMAGEN 3 -->
       <img
         class="imagen"
         src="F902A271-1DA8-4FF3-927F-0D1D3D9AD901.png"
         alt="Historia del café"
       >
 
+
+      <!-- IMAGEN 4 -->
       <img
         class="imagen"
         src="3AFA15B5-2B88-4B61-9887-5351BED8F93E.png"
         alt="Historia del café"
       >
 
+
+      <!-- IMAGEN 5 -->
       <img
         class="imagen"
         src="CEA7B72F-328D-4822-8FF8-C70AEE86CB53.png"
         alt="Historia del café"
       >
 
+
+      <!-- IMAGEN 6 -->
       <img
         class="imagen"
         src="8AB35F0D-65AE-49B2-A53F-00F379FF27AB.png"
         alt="Historia del café"
       >
 
+
+      <!-- REDES -->
       <section class="social">
-        <h2>Síguenos <span class="corazon">♡</span></h2>
+
+        <h2>
+          Síguenos <span class="corazon">♡</span>
+        </h2>
+
         <p>Haz clic aquí ↓</p>
 
         <div id="redes" class="redes"></div>
+
       </section>
 
     </div>
 
+
+    <!-- CONFIGURADOR -->
     <section id="configuracion" class="configuracion">
 
       <h2>Configuración de cafetería</h2>
 
       <div class="campo">
         <label>ID de la cafetería</label>
-        <input id="idCafe" type="number" placeholder="Ej. 1">
+
+        <input
+          id="idCafe"
+          type="number"
+          placeholder="Ej. 1"
+        >
       </div>
 
-      <button class="boton-generar" onclick="generarEnlace()">
+      <button
+        class="boton-generar"
+        onclick="generarEnlace()"
+      >
         Generar enlace
       </button>
 
@@ -241,200 +331,297 @@
 
   </div>
 
-<script>
 
-  /* ==============================
-     SUPABASE
-  ============================== */
+  <script>
 
-  const SUPABASE_URL =
-    "https://lnnprkswoghsylljfqom.supabase.co";
+    /* =========================
+       SUPABASE
+    ========================= */
 
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_VU_VnvL0_chSbvIsA-Unsg_2jn9XHMq";
+    const SUPABASE_URL =
+      "https://lnnprkswoghsylljfqom.supabase.co";
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
+    const SUPABASE_PUBLISHABLE_KEY =
+      "sb_publishable_VU_VnvL0_chSbvIsA-Unsg_2jn9XHMq";
 
-
-  /* ==============================
-     ELEMENTOS
-  ============================== */
-
-  const cargando = document.getElementById("cargando");
-  const historia = document.getElementById("historia");
-  const configuracion = document.getElementById("configuracion");
-  const redes = document.getElementById("redes");
-  const audio = document.getElementById("audio");
-  const botonMusica = document.getElementById("botonMusica");
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
 
 
-  /* ==============================
-     MÚSICA
-  ============================== */
+    /* =========================
+       ELEMENTOS
+    ========================= */
 
-  botonMusica.addEventListener("click", function() {
+    const cargando =
+      document.getElementById("cargando");
 
-    if (audio.paused) {
+    const historia =
+      document.getElementById("historia");
 
-      audio.play();
+    const configuracion =
+      document.getElementById("configuracion");
 
-      botonMusica.textContent = "❚❚ Pausar la historia";
+    const redes =
+      document.getElementById("redes");
 
-    } else {
+    const audio =
+      document.getElementById("audio");
 
-      audio.pause();
-
-      botonMusica.textContent = "▶ Escuchar la historia";
-
-    }
-
-  });
-
-  audio.addEventListener("ended", function() {
-
-    botonMusica.textContent = "▶ Escuchar la historia";
-
-  });
+    const botonMusica =
+      document.getElementById("botonMusica");
 
 
-  /* ==============================
-     REDES SOCIALES
-  ============================== */
+    /* =========================
+       MÚSICA
+    ========================= */
 
-  function agregarRed(nombre, url) {
+    botonMusica.addEventListener(
+      "click",
+      function () {
 
-    if (!url) return;
+        if (audio.paused) {
 
-    const enlace = document.createElement("a");
+          audio.play();
 
-    enlace.className = "red";
-    enlace.href = url;
-    enlace.target = "_blank";
-    enlace.rel = "noopener noreferrer";
-    enlace.textContent = nombre;
+          botonMusica.textContent =
+            "❚❚ Pausar la historia";
 
-    redes.appendChild(enlace);
-  }
+        } else {
 
+          audio.pause();
 
-  /* ==============================
-     CARGAR CAFETERÍA
-  ============================== */
+          botonMusica.textContent =
+            "▶ Escuchar la historia";
 
-  async function cargarCafeteria() {
+        }
 
-    const parametros = new URLSearchParams(
-      window.location.search
+      }
     );
 
-    const id = parametros.get("id");
 
-    if (!id) {
+    audio.addEventListener(
+      "ended",
+      function () {
 
-      cargando.style.display = "none";
-      configuracion.style.display = "block";
+        botonMusica.textContent =
+          "▶ Escuchar la historia";
 
-      return;
+      }
+    );
+
+
+    /* =========================
+       REDES
+    ========================= */
+
+    function agregarRed(nombre, url) {
+
+      if (!url || !url.trim()) {
+        return;
+      }
+
+      const enlace =
+        document.createElement("a");
+
+      enlace.className = "red";
+
+      enlace.href = url;
+
+      enlace.target = "_blank";
+
+      enlace.rel =
+        "noopener noreferrer";
+
+      enlace.textContent = nombre;
+
+      redes.appendChild(enlace);
     }
 
-    const { data, error } = await supabaseClient
-      .from("Cafeterías")
-      .select("nombre, instagram, facebook, tiktok")
-      .eq("id", id)
-      .single();
+
+    /* =========================
+       CARGAR CAFETERÍA
+    ========================= */
+
+    async function cargarCafeteria() {
+
+      const parametros =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      const id =
+        parametros.get("id");
 
 
-    if (error) {
+      /* CONFIGURADOR */
 
-      console.error(error);
+      if (!id) {
 
-      cargando.textContent =
-        "No se pudo cargar la información de la cafetería.";
+        cargando.style.display =
+          "none";
 
-      return;
+        configuracion.style.display =
+          "block";
+
+        return;
+      }
+
+
+      /* SUPABASE */
+
+      const { data, error } =
+        await supabaseClient
+
+          .from("Cafeterías")
+
+          .select(
+            "nombre, instagram, facebook, tiktok"
+          )
+
+          .eq("id", id)
+
+          .single();
+
+
+      if (error) {
+
+        console.error(error);
+
+        cargando.textContent =
+          "No se pudo cargar la información de la cafetería.";
+
+        return;
+      }
+
+
+      /* NOMBRE */
+
+      if (data.nombre) {
+
+        document.title =
+          data.nombre;
+
+      }
+
+
+      /* REDES */
+
+      agregarRed(
+        "Instagram",
+        data.instagram
+      );
+
+      agregarRed(
+        "Facebook",
+        data.facebook
+      );
+
+      agregarRed(
+        "TikTok",
+        data.tiktok
+      );
+
+
+      /* MOSTRAR HISTORIA */
+
+      cargando.style.display =
+        "none";
+
+      historia.style.display =
+        "block";
     }
 
 
-    if (data.nombre) {
+    /* =========================
+       GENERAR ENLACE
+    ========================= */
 
-      document.title = data.nombre;
+    function generarEnlace() {
 
+      const id =
+        document.getElementById(
+          "idCafe"
+        ).value;
+
+
+      if (!id) {
+
+        alert(
+          "Escribe el ID de la cafetería."
+        );
+
+        return;
+      }
+
+
+      const enlace =
+        window.location.origin +
+        window.location.pathname +
+        "?id=" +
+        encodeURIComponent(id);
+
+
+      document.getElementById(
+        "resultado"
+      ).innerHTML =
+
+        "<strong>Enlace de esta cafetería:</strong><br><br>" +
+
+        "<a href='" +
+        enlace +
+        "' target='_blank'>" +
+        enlace +
+        "</a><br><br>" +
+
+        "<button " +
+        "class='boton-generar' " +
+        "onclick=\"copiarEnlace('" +
+        enlace +
+        "')\">" +
+
+        "Copiar enlace" +
+
+        "</button>";
     }
 
 
-    agregarRed("Instagram", data.instagram);
-    agregarRed("Facebook", data.facebook);
-    agregarRed("TikTok", data.tiktok);
+    /* =========================
+       COPIAR ENLACE
+    ========================= */
 
+    function copiarEnlace(enlace) {
 
-    cargando.style.display = "none";
-    historia.style.display = "block";
+      navigator.clipboard
+        .writeText(enlace)
 
-  }
+        .then(function () {
 
+          alert(
+            "Enlace copiado."
+          );
 
-  /* ==============================
-     GENERAR ENLACE
-  ============================== */
+        })
 
-  function generarEnlace() {
+        .catch(function () {
 
-    const id = document.getElementById("idCafe").value;
+          alert(
+            "No se pudo copiar. Mantén presionado el enlace para copiarlo."
+          );
 
-    if (!id) {
-
-      alert("Escribe el ID de la cafetería.");
-
-      return;
+        });
     }
 
-    const enlace =
-      window.location.origin +
-      window.location.pathname +
-      "?id=" +
-      encodeURIComponent(id);
 
-    document.getElementById("resultado").innerHTML =
-      "<strong>Enlace de esta cafetería:</strong><br><br>" +
-      "<a href='" + enlace + "' target='_blank'>" +
-      enlace +
-      "</a><br><br>" +
-      "<button class='boton-generar' onclick=\"copiarEnlace('" +
-      enlace +
-      "')\">" +
-      "Copiar enlace" +
-      "</button>";
+    /* =========================
+       INICIAR
+    ========================= */
 
-  }
+    cargarCafeteria();
 
-
-  function copiarEnlace(enlace) {
-
-    navigator.clipboard.writeText(enlace)
-      .then(function() {
-
-        alert("Enlace copiado.");
-
-      })
-      .catch(function() {
-
-        alert("No se pudo copiar. Mantén presionado el enlace para copiarlo.");
-
-      });
-
-  }
-
-
-  /* ==============================
-     INICIAR
-  ============================== */
-
-  cargarCafeteria();
-
-</script>
+  </script>
 
 </body>
 </html>
