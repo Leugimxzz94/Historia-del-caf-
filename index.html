@@ -1,790 +1,440 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8">
+<title>Historia del Café</title>
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  background: #f7f1e8;
+  color: #5c4033;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
 
-  <title>La historia del café</title>
+.contenedor {
+  max-width: 600px;
+  margin: auto;
+}
 
-  <style>
+img {
+  width: 100%;
+  display: block;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+.musica {
+  padding: 25px 15px;
+  background: #f7f1e8;
+}
 
-    body {
-      margin: 0;
-      background: #f5f1eb;
-      font-family: Arial, sans-serif;
-      color: #2b2622;
-    }
+.boton-musica {
+  background: #8b4b38;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 14px 25px;
+  font-size: 17px;
+  cursor: pointer;
+}
 
-    .pagina {
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-      background: #f5f1eb;
-    }
+.redes {
+  display: none;
+  padding: 35px 20px 45px;
+  background: #f7f1e8;
+}
 
-    .imagen {
-      width: 100%;
-      display: block;
-    }
+.redes h2 {
+  margin: 0 0 16px;
+  font-family: Georgia, serif;
+  font-weight: normal;
+  font-size: 31px;
+  color: #8b4b38;
+  font-style: italic;
+}
 
+.corazon {
+  font-family: Georgia, serif;
+  font-style: normal;
+  font-size: 29px;
+  color: #8b4b38;
+}
 
-    /* =========================
-       MÚSICA
-       ========================= */
+.indicacion-redes {
+  margin-top: 0;
+  margin-bottom: 25px;
+  color: #8b4b38;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  font-style: italic;
+}
 
-    .musica {
-      padding: 28px 20px 30px;
-      text-align: center;
-      background: #f5f1eb;
-    }
+.indicacion-redes span {
+  display: inline;
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-style: normal;
+  margin-left: 4px;
+  color: #8b4b38;
+}
 
-    .boton-musica {
-      border: none;
-      background: #292929;
-      color: white;
-      padding: 17px 34px;
-      border-radius: 40px;
-      font-size: 18px;
-      cursor: pointer;
-    }
+.boton-red {
+  display: none;
+  text-decoration: none;
+  color: white;
+  background: #8b4b38;
+  padding: 13px 22px;
+  margin: 8px;
+  border-radius: 25px;
+  font-size: 16px;
+}
 
-    .boton-musica:active {
-      transform: scale(0.98);
-    }
+.configurador {
+  display: none;
+  padding: 30px 20px;
+  background: white;
+  text-align: left;
+}
 
-    .texto-musica {
-      margin-top: 18px;
-      color: #888;
-      font-size: 16px;
-    }
+.configurador h2 {
+  text-align: center;
+  color: #8b4b38;
+  font-family: Georgia, serif;
+}
 
-    audio {
-      display: none;
-    }
+.configurador label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
 
+.configurador input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
 
-    /* =========================
-       REDES SOCIALES
-       ========================= */
+.boton-generar {
+  width: 100%;
+  margin-top: 25px;
+  padding: 14px;
+  background: #8b4b38;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 17px;
+}
 
-    .redes {
-      display: none;
-      padding: 30px 20px 40px;
-      text-align: center;
-      background: #f5f1eb;
-    }
+.resultado {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f7f1e8;
+  border-radius: 10px;
+  word-break: break-all;
+}
 
-    .redes h2 {
-      margin: 0 0 16px;
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: 31px;
-      color: #8b4b38;
-      font-style: italic;
-    }
-
-    .corazon {
-      font-family: Georgia, serif;
-      font-style: normal;
-      font-size: 29px;
-      color: #8b4b38;
-    }
-
-    .indicacion-redes {
-      margin-top: 0;
-      margin-bottom: 25px;
-      color: #8b4b38;
-      font-family: Georgia, serif;
-      font-size: 17px;
-      font-style: italic;
-    }
-
-    .indicacion-redes span {
-      display: inline;
-      font-family: Georgia, serif;
-      font-size: 21px;
-      font-style: normal;
-      margin-left: 4px;
-      color: #8b4b38;
-    }
-
-    .botones-redes {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 360px;
-      margin: 0 auto;
-    }
-
-    .red-social {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: white;
-      padding: 15px 20px;
-      border-radius: 30px;
-      font-size: 17px;
-      font-weight: 500;
-    }
-
-    .instagram {
-      background: #8b4b38;
-    }
-
-    .facebook {
-      background: #4d5963;
-    }
-
-    .tiktok {
-      background: #292929;
-    }
-
-
-    /* =========================
-       CONFIGURADOR
-       ========================= */
-
-    .configuracion {
-      display: none;
-      padding: 25px 20px 40px;
-      background: #eee8df;
-    }
-
-    .configuracion h2 {
-      font-family: Georgia, serif;
-      font-weight: normal;
-      font-size: 28px;
-      margin-top: 0;
-    }
-
-    .campo {
-      margin-bottom: 18px;
-    }
-
-    .campo label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: bold;
-    }
-
-    .campo input {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
-      background: white;
-    }
-
-    .generar {
-      width: 100%;
-      border: none;
-      background: #292929;
-      color: white;
-      padding: 16px;
-      border-radius: 30px;
-      font-size: 17px;
-      margin-top: 10px;
-    }
-
-    #resultado {
-      display: none;
-      margin-top: 20px;
-      padding: 15px;
-      background: white;
-      border-radius: 10px;
-      word-break: break-all;
-      font-size: 14px;
-    }
-
-    .copiar {
-      width: 100%;
-      border: none;
-      background: #8b4b38;
-      color: white;
-      padding: 13px;
-      border-radius: 25px;
-      margin-top: 12px;
-      font-size: 16px;
-    }
-
-  </style>
-
+.codigo {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+}
+</style>
 </head>
-
 
 <body>
 
-  <main class="pagina">
+<div class="contenedor">
 
+  <!-- MÚSICA -->
+  <div class="musica">
+    <button class="boton-musica" onclick="toggleMusica()">
+      ▶ Escuchar la historia
+    </button>
 
-    <!-- =========================
-         MÚSICA
-         ========================= -->
+    <audio id="audio" loop>
+      <source src="Instrumental.mp3" type="audio/mpeg">
+    </audio>
+  </div>
 
-    <section class="musica">
 
-      <button
-        class="boton-musica"
-        id="botonMusica">
+  <!-- HISTORIA -->
+  <img src="C4DA13F8-8763-496B-9D5A-E0477E1975A7.png">
+  <img src="1F871C37-53A1-4F07-9521-0391454A9210.png">
+  <img src="F902A271-1DA8-4FF3-927F-0D1D3D9AD901.png">
+  <img src="3AFA15B5-2B88-4B61-9887-5351BED8F93E.png">
+  <img src="CEA7B72F-328D-4822-8FF8-C70AEE86CB53.png">
 
-        ▶ Escuchar la historia
 
-      </button>
+  <!-- IMAGEN FINAL -->
+  <img src="8AB35F0D-65AE-49B2-A53F-00F379FF27AB.png">
 
 
-      <div class="texto-musica">
+  <!-- REDES SOCIALES -->
+  <div class="redes" id="redes">
 
-        Una pequeña melodía para acompañar este momento.
+    <h2>
+      Síguenos <span class="corazon">♡</span>
+    </h2>
 
-      </div>
+    <div class="indicacion-redes">
+      Haz clic aquí <span>↓</span>
+    </div>
 
+    <a id="instagram" class="boton-red" target="_blank">
+      Instagram
+    </a>
 
-      <audio id="musica" loop>
+    <a id="facebook" class="boton-red" target="_blank">
+      Facebook
+    </a>
 
-        <source
-          src="Instrumental.mp3"
-          type="audio/mpeg">
+    <a id="tiktok" class="boton-red" target="_blank">
+      TikTok
+    </a>
 
-      </audio>
+  </div>
 
-    </section>
 
+  <!-- CONFIGURADOR -->
+  <div class="configurador" id="configurador">
 
+    <h2>Configurador de cafetería</h2>
 
-    <!-- =========================
-         IMAGEN 1
-         ========================= -->
+    <label>Instagram</label>
+    <input
+      id="inputInstagram"
+      type="url"
+      placeholder="https://www.instagram.com/..."
+    >
 
-    <img
-      class="imagen"
-      src="C4DA13F8-8763-496B-9D5A-E0477E1975A7.png"
-      alt="La historia del café">
+    <label>Facebook</label>
+    <input
+      id="inputFacebook"
+      type="url"
+      placeholder="https://www.facebook.com/..."
+    >
 
+    <label>TikTok</label>
+    <input
+      id="inputTiktok"
+      type="url"
+      placeholder="https://www.tiktok.com/@..."
+    >
 
+    <button class="boton-generar" onclick="generarCafe()">
+      Generar enlace NFC
+    </button>
 
-    <!-- =========================
-         IMAGEN 2
-         ========================= -->
+    <div id="resultado" class="resultado" style="display:none;"></div>
 
-    <img
-      class="imagen"
-      src="1F871C37-53A1-4F07-9521-0391454A9210.png"
-      alt="La historia del café">
+  </div>
 
+</div>
 
 
-    <!-- =========================
-         IMAGEN 3
-         ========================= -->
+<script>
 
-    <img
-      class="imagen"
-      src="F902A271-1DA8-4FF3-927F-0D1D3D9AD901.png"
-      alt="La historia del café">
+/* =====================================================
+   CAFETERÍAS
 
+   Cada letra representa una cafetería.
+   Aquí guardaremos sus redes sociales.
+   ===================================================== */
 
+const CAFES = {
 
-    <!-- =========================
-         IMAGEN 4
-         ========================= -->
+  "a": {
+    instagram: "",
+    facebook: "",
+    tiktok: ""
+  },
 
-    <img
-      class="imagen"
-      src="3AFA15B5-2B88-4B61-9887-5351BED8F93E.png"
-      alt="La historia del café">
+  "b": {
+    instagram: "",
+    facebook: "",
+    tiktok: ""
+  },
 
+  "c": {
+    instagram: "",
+    facebook: "",
+    tiktok: ""
+  }
 
+};
 
-    <!-- =========================
-         IMAGEN 5
-         ========================= -->
 
-    <img
-      class="imagen"
-      src="CEA7B72F-328D-4822-8FF8-C70AEE86CB53.png"
-      alt="La historia del café">
+/* =====================================================
+   MÚSICA
+   ===================================================== */
 
+function toggleMusica() {
 
+  const audio = document.getElementById("audio");
+  const boton = document.querySelector(".boton-musica");
 
-    <!-- =========================
-         IMAGEN FINAL
-         ========================= -->
+  if (audio.paused) {
 
-    <img
-      class="imagen"
-      src="8AB35F0D-65AE-49B2-A53F-00F379FF27AB.png"
-      alt="Gracias por ser parte de esta historia">
+    audio.play();
 
+    boton.innerHTML = "❚❚ Pausar la historia";
 
+  } else {
 
-    <!-- =========================
-         REDES SOCIALES
-         ========================= -->
+    audio.pause();
 
-    <section
-      class="redes"
-      id="redes">
+    boton.innerHTML = "▶ Escuchar la historia";
 
+  }
 
-      <h2>
+}
 
-        Síguenos <span class="corazon">♡</span>
 
-      </h2>
+/* =====================================================
+   MOSTRAR REDES
+   ===================================================== */
 
+function mostrarRedes(cafe) {
 
-      <div class="indicacion-redes">
+  if (!cafe) return;
 
-        Haz clic aquí <span>↓</span>
+  let hayRedes = false;
 
-      </div>
+  if (cafe.instagram) {
 
+    const boton = document.getElementById("instagram");
 
-      <div class="botones-redes">
+    boton.href = cafe.instagram;
+    boton.style.display = "inline-block";
 
+    hayRedes = true;
 
-        <a
-          id="instagram"
-          class="red-social instagram"
-          href="#"
-          target="_blank"
-          rel="noopener">
+  }
 
-          Instagram
+  if (cafe.facebook) {
 
-        </a>
+    const boton = document.getElementById("facebook");
 
+    boton.href = cafe.facebook;
+    boton.style.display = "inline-block";
 
-        <a
-          id="facebook"
-          class="red-social facebook"
-          href="#"
-          target="_blank"
-          rel="noopener">
+    hayRedes = true;
 
-          Facebook
+  }
 
-        </a>
+  if (cafe.tiktok) {
 
+    const boton = document.getElementById("tiktok");
 
-        <a
-          id="tiktok"
-          class="red-social tiktok"
-          href="#"
-          target="_blank"
-          rel="noopener">
+    boton.href = cafe.tiktok;
+    boton.style.display = "inline-block";
 
-          TikTok
+    hayRedes = true;
 
-        </a>
+  }
 
+  if (hayRedes) {
 
-      </div>
+    document.getElementById("redes").style.display = "block";
 
-    </section>
+  }
 
+}
 
 
-    <!-- =========================
-         CONFIGURADOR
-         ========================= -->
+/* =====================================================
+   CONFIGURADOR
+   ===================================================== */
 
-    <section
-      class="configuracion"
-      id="configuracion">
+function generarCafe() {
 
+  const instagram =
+    document.getElementById("inputInstagram").value.trim();
 
-      <h2>
+  const facebook =
+    document.getElementById("inputFacebook").value.trim();
 
-        Configurar cafetería
+  const tiktok =
+    document.getElementById("inputTiktok").value.trim();
 
-      </h2>
 
+  /*
+    Para esta primera cafetería utilizaremos "a".
+  */
 
-      <div class="campo">
+  const codigo = "a";
 
-        <label for="instagramInput">
 
-          Instagram
+  const enlace =
+    "https://leugimxzz94.github.io/h/?c=" + codigo;
 
-        </label>
 
+  const resultado =
+    document.getElementById("resultado");
 
-        <input
-          id="instagramInput"
-          type="url"
-          placeholder="https://instagram.com/cafeteria">
 
-      </div>
+  resultado.style.display = "block";
 
+  resultado.innerHTML =
 
+    "<strong>Enlace NFC:</strong><br><br>" +
 
-      <div class="campo">
+    enlace +
 
-        <label for="facebookInput">
+    "<br><br>" +
 
-          Facebook
+    "<div class='codigo'>" +
 
-        </label>
+    "Código: " + codigo +
 
+    "</div>" +
 
-        <input
-          id="facebookInput"
-          type="url"
-          placeholder="https://facebook.com/cafeteria">
+    "<br>" +
 
-      </div>
+    "⚠️ Las redes introducidas deben agregarse a la configuración de esta cafetería antes de utilizar el NFC.";
 
+}
 
 
-      <div class="campo">
+/* =====================================================
+   DETECTAR CAFETERÍA
+   ===================================================== */
 
-        <label for="tiktokInput">
+const parametros = new URLSearchParams(window.location.search);
 
-          TikTok
+const codigoCafe = parametros.get("c");
 
-        </label>
 
+/*
+   Si la URL contiene ?c=a,
+   buscamos la cafetería "a".
+*/
 
-        <input
-          id="tiktokInput"
-          type="url"
-          placeholder="https://tiktok.com/@cafeteria">
+if (codigoCafe && CAFES[codigoCafe]) {
 
-      </div>
+  mostrarRedes(CAFES[codigoCafe]);
 
+}
 
 
-      <button
-        class="generar"
-        onclick="generarEnlace()">
+/*
+   Mostrar configurador solamente con ?config=1
+*/
 
-        Generar enlace de esta cafetería
+if (parametros.get("config") === "1") {
 
-      </button>
+  document.getElementById("configurador").style.display = "block";
 
+}
 
-
-      <div id="resultado">
-
-        <strong>
-
-          Enlace generado:
-
-        </strong>
-
-
-        <br>
-        <br>
-
-
-        <span id="enlaceGenerado"></span>
-
-
-        <button
-          class="copiar"
-          onclick="copiarEnlace()">
-
-          Copiar enlace
-
-        </button>
-
-      </div>
-
-
-    </section>
-
-
-  </main>
-
-
-
-  <script>
-
-
-    /* =========================
-       MÚSICA
-       ========================= */
-
-    const botonMusica =
-      document.getElementById("botonMusica");
-
-    const musica =
-      document.getElementById("musica");
-
-
-    botonMusica.addEventListener(
-      "click",
-      function() {
-
-
-        if (musica.paused) {
-
-          musica.play();
-
-          botonMusica.textContent =
-            "❚❚ Pausar la historia";
-
-        }
-
-        else {
-
-          musica.pause();
-
-          botonMusica.textContent =
-            "▶ Escuchar la historia";
-
-        }
-
-      }
-    );
-
-
-
-    /* =========================
-       REDES SOCIALES
-       ========================= */
-
-    const parametros =
-      new URLSearchParams(
-        window.location.search
-      );
-
-
-    const instagramURL =
-      parametros.get("instagram");
-
-
-    const facebookURL =
-      parametros.get("facebook");
-
-
-    const tiktokURL =
-      parametros.get("tiktok");
-
-
-    let hayRedes = false;
-
-
-
-    if (instagramURL) {
-
-      const instagram =
-        document.getElementById("instagram");
-
-
-      instagram.href =
-        instagramURL;
-
-
-      instagram.style.display =
-        "flex";
-
-
-      hayRedes = true;
-
-    }
-
-
-
-    if (facebookURL) {
-
-      const facebook =
-        document.getElementById("facebook");
-
-
-      facebook.href =
-        facebookURL;
-
-
-      facebook.style.display =
-        "flex";
-
-
-      hayRedes = true;
-
-    }
-
-
-
-    if (tiktokURL) {
-
-      const tiktok =
-        document.getElementById("tiktok");
-
-
-      tiktok.href =
-        tiktokURL;
-
-
-      tiktok.style.display =
-        "flex";
-
-
-      hayRedes = true;
-
-    }
-
-
-
-    if (hayRedes) {
-
-      document.getElementById("redes")
-        .style.display = "block";
-
-    }
-
-
-
-    /* =========================
-       MOSTRAR CONFIGURADOR
-       ========================= */
-
-    if (
-      parametros.get("config") === "1"
-    ) {
-
-      document.getElementById(
-        "configuracion"
-      ).style.display = "block";
-
-    }
-
-
-
-    /* =========================
-       GENERAR ENLACE
-       ========================= */
-
-    function generarEnlace() {
-
-
-      const instagram =
-        document.getElementById(
-          "instagramInput"
-        ).value.trim();
-
-
-      const facebook =
-        document.getElementById(
-          "facebookInput"
-        ).value.trim();
-
-
-      const tiktok =
-        document.getElementById(
-          "tiktokInput"
-        ).value.trim();
-
-
-
-      const baseURL =
-        window.location.origin +
-        window.location.pathname;
-
-
-
-      const nuevoURL =
-        new URL(baseURL);
-
-
-
-      if (instagram) {
-
-        nuevoURL.searchParams.set(
-          "instagram",
-          instagram
-        );
-
-      }
-
-
-
-      if (facebook) {
-
-        nuevoURL.searchParams.set(
-          "facebook",
-          facebook
-        );
-
-      }
-
-
-
-      if (tiktok) {
-
-        nuevoURL.searchParams.set(
-          "tiktok",
-          tiktok
-        );
-
-      }
-
-
-
-      const resultado =
-        document.getElementById(
-          "resultado"
-        );
-
-
-      const enlace =
-        document.getElementById(
-          "enlaceGenerado"
-        );
-
-
-      enlace.textContent =
-        nuevoURL.toString();
-
-
-      resultado.style.display =
-        "block";
-
-    }
-
-
-
-    /* =========================
-       COPIAR ENLACE
-       ========================= */
-
-    function copiarEnlace() {
-
-
-      const enlace =
-        document.getElementById(
-          "enlaceGenerado"
-        ).textContent;
-
-
-      navigator.clipboard.writeText(
-        enlace
-      );
-
-
-      document.querySelector(
-        ".copiar"
-      ).textContent =
-        "✓ Enlace copiado";
-
-    }
-
-
-  </script>
-
+</script>
 
 </body>
-
 </html>
